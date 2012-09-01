@@ -1,0 +1,18 @@
+# PHP-FPM Template
+# By Cyprix Enterprises 2012 - For the Albatross Manager
+#
+# Variables:
+# _accid_ = account id
+#
+[_accid_]
+listen = /var/lib/php/_accid_.sock
+user = z_accid_
+group = z_accid_
+pm = ondemand
+pm.max_children = 10
+pm.process_idle_timeout = 30
+pm.status_path = /fpm_status_page.php
+env[PATH] = $PATH
+php_admin_value[log_errors] = On
+php_admin_value[error_log] = /var/wwwdata/albatross/_accid_/logs/php/error.log
+php_admin_value[memory_limit] = 64M

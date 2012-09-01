@@ -1,0 +1,77 @@
+<?php
+/* 
+* Albatross Manager
+* 
+* Primary Configuration File
+* 
+* Description:
+*  Contains all admin changeable configuration options for the Albatross Manager
+*
+* Copyright 2012 Cyprix Enterprises
+*/
+?>
+<?php
+// TODO: In configuration, set default account id
+$conf['base_home_dir'] = "/var/wwwdata/albatross";
+
+$conf['rootpassword'] = "12345asdfghj234567";
+
+$conf['cookie_domain'] = "albatross.cyprix.com.au";
+
+$conf['webmail_link'] = "http://mail.cyprix.com.au";
+
+$conf['awstats']['url'] = "http://apache.cyprix.com.au/awstats/?config=";
+
+$conf['amm_log_file'] = "/var/wwwdata/albatross/100001/albatross/amm_error.log";
+
+$conf['page_trace'] = true;
+
+// DNS Default Settings
+//// Default SOA
+$conf['dns']['soa']['domain email'] = "webmaster@cyprix.com.au";
+$conf['dns']['soa']['serial'] = "1";
+$conf['dns']['soa']['refresh'] = "3600";
+$conf['dns']['soa']['retry'] = "300";
+$conf['dns']['soa']['expire'] = "86400";
+$conf['dns']['soa']['minimum'] = "3600"; // TTL
+//// Nameservers - default primary, default secondary etc.
+$conf['dns']['ns']['default'][0] = "ns.cyprix.net";
+$conf['dns']['ns']['default'][1] = "ns2.cyprix.net";
+//// Unless set by TLD
+$conf['dns']['ns']['tld']['au'][0] = "ns.cyprix.com.au";
+$conf['dns']['ns']['tld']['au'][1] = "ns2.cyprix.com.au";
+//// Default DNS Records
+$conf['dns']['rec'][] = array("_domain_","MX","mail.cyprix.com.au",10);
+$conf['dns']['rec'][] = array("_domain_","A","216.66.81.25");
+$conf['dns']['rec'][] = array("www._domain_","CNAME","_domain_");
+
+// Email Default Settings
+$conf['email']['uid'] = "5000";
+$conf['email']['gid'] = "5000";
+$conf['email']['home'] = "/";
+$conf['email']['maildir'] = "/var/vhosts/_domain_/_username_/"; // !!!must have the trailing slash!!!
+
+// Site Default Settings
+$conf['site']['php']['enabled'] = "1"; // Enable PHP initially for all sites
+$conf['site']['default']['profile'] = "_profile_";
+$conf['site']['awstats']['name'] = "_sitename_";
+
+// Site Configuration Profile Templates
+// $conf['profile'][ _name of profile_ ][ _attribute name_ ] = value
+$conf['profile']['wordpress']['directory'] = "/";
+$conf['profile']['mediawiki']['directory'] = "/";
+$conf['profile']['mediawiki']['subdirectory'] = "wiki";
+
+//// Default Account Folders - Format: Directory,Owner,Group,Permissions
+$conf['account']['folder'][] = array("archive","nginx","z_accid_",0771);
+$conf['account']['folder'][] = array("logs","nginx","z_accid_",0751);
+$conf['account']['folder'][] = array("logs/php","z_accid_","z_accid_",0770);
+
+//// Default Account Files - Format: File,Template,Owner,Group,Permissions
+$conf['account']['file'][] = array(".bash_logout","file.bash_logout.template","z_accid_","z_accid_",0600);
+$conf['account']['file'][] = array(".bash_profile","file.bash_profile.template","z_accid_","z_accid_",0600);
+$conf['account']['file'][] = array(".bash_history","","z_accid_","z_accid_",0600);
+$conf['account']['file'][] = array(".bashrc","file.bashrc.template","z_accid_","z_accid_",0600);
+$conf['account']['file'][] = array(".viminfo","","z_accid_","z_accid_",0600);
+$conf['account']['file'][] = array(".Xauthority-c","","root","root",0600);
+?> 

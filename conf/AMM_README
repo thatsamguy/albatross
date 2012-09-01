@@ -1,0 +1,10 @@
+Albatross Manager Monitor
+
+Current Roles:
+- runs tasks on request
+- reloads services when required
+- runs scheduled tasks
+- performs all tasks requiring root access
+
+Future Roles:
+- Monitor core services for availability and restart if required

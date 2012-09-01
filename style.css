@@ -1,0 +1,228 @@
+body {
+  background: #fff;
+  font: 0.8em Arial,Helvetica,Sans-Serif;
+  padding: 0;
+  margin: 0;
+}
+#container {
+  text-align: left;
+  margin: 0 auto;
+  position: relative;
+  border: none; 
+  min-width: 800px;
+}
+a {
+  text-decoration: none;
+  color: #0084B4;
+  background: transparent;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: none;
+}
+img {
+  border: none;
+}
+img.logo {
+  padding: 10px 15px;
+}
+h1 {
+  font-weight: normal;
+  text-align: left;
+  font-size: 1.75em;
+  margin: 0;
+}
+h2 {
+  font-weight: normal;
+  text-align: left;
+  font-size: 1.4em;
+  margin: 0;
+}
+h3 {
+  font-weight: normal;
+  text-align: left;
+  font-size: 1.3em;
+  margin: 0 0 0.25em 0;
+}
+h4 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 0 0.5em 0;
+}
+#header, #main, #footer{
+  width: 100%;
+  display: inline-block;
+}
+#header {
+  background: #ddeeff;
+  min-height: 100px;
+}
+#header h1 {
+  padding: 8px 10px;
+  font-size: 2.5em;
+  margin: 0 0 0.5em 0;
+}
+#main {
+  border-color: #ccddff;
+  border-style: solid;
+  border-width: 4px 0 4px 0;
+}
+#footer {
+  padding: 5px 0;
+  background: #fff;
+  color: #777;
+  text-align: center;
+  font-family: Arial,Helvetica,Sans-Serif;
+  font-size: 0.95em;
+  height: 20px;
+}
+#footer ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: block;
+  width: 480px;
+}
+#footer ul li {
+  float: left;
+  margin: 0;
+  padding: 0.25em 1.0em;
+}
+#footer ul a {
+  color: #0084B4;
+  margin: 0;
+  display: inline;
+  padding: 0;
+}
+div.menu {
+  width: 100%;
+}
+div.menu div {
+  max-width: 75px;
+  min-width: 65px;
+  height: 65px;
+  border: 0px solid black;
+  text-align: center;
+  vertical-align: top;
+  float: left;
+  background: transparent;
+  color: #0084B4;
+  margin: 0 10px 5px 10px;
+}
+div.menu div.right {
+  float: right;
+}
+div.menu a:hover {
+  text-decoration: none;
+  background: #c9f5ac;
+}
+div.center {
+  text-align: center;
+  vertical-align: middle;
+}
+div.vcenter {
+  vertical-align: middle;
+}
+.fullheight {
+  height: 100%;
+}
+div.pagetitle {
+  color: #0084B4;
+  background: transparent;
+}
+div.block {
+  width: 370px;
+  float: left;
+  border: 1px solid #ccc;
+  margin: 5px 5px 10px 10px;
+  padding: 5px;
+}
+div.doublewidth {
+  width: 767px;
+}
+div.midwidth {
+  width: 570px;
+}
+div.fullwidth {
+  width: 95%;
+  margin: 5px 0 0 10px;
+  padding: 5px;
+  float: left;
+}
+div.minormenu {
+  padding: 0;
+}
+div.minormenu div.menu div{
+  height: auto;
+  max-width: 130px;
+}
+div.linebreak {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  height: 0;
+}
+#login {
+  margin: 5px 5px 15px 0;
+  font-size: 110%;
+}
+#login th{
+  text-align: center;
+}
+#login td.left {
+  text-align: left;
+}
+#login td.right {
+  text-align: right;
+}
+#login td, #login th {
+  border-collapse: collapse;
+  padding: 2px;
+}
+#login input {
+  font-size: 90%;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  padding: 3px 5px;
+}
+div.block table {
+  border-collapse: collapse;
+  width: 100%;
+}
+div.block td, div.block th {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+div.block thead th {
+  text-align: center;
+  color: black;
+  background: #eee;
+}
+div.block tfoot th {
+  text-align: center;
+}
+div.block input {
+  padding: 2px 3px;
+  size: 1.5em;
+}
+div.block input.text {
+  border: 1px solid #ccc;
+  background-color: transparent;
+  padding: 3px 5px;
+}
+div.block select {
+  padding: 2px 5px;
+}
+.error {
+  color: red;
+  background: transparent;
+}
+.center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}

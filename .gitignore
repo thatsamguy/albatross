@@ -1,0 +1,9 @@
+albatross.config.php
+mysql.config.php
+test.php
+test/*
+robots.txt
+*.log
+*~
+.directory
+*-swp

@@ -1,0 +1,41 @@
+<?php
+/* 
+* Albatross Manager
+* 
+* MySQL Configuration Settings
+* 
+* Description:
+*  Contains configuration settings for connecting to, and authenticating to the albatross database.
+*
+* Copyright 2012 Cyprix Enterprises
+*/
+?>
+<?php
+//// Default MySQL Database Configuration Settings
+$sql_config['default']['host'] = "127.0.0.1";   // Change this to the proper DB Host name
+$sql_config['default']['username'] = "";       // Change this to the proper DB User
+$sql_config['default']['password'] = ""; // Change this to the proper DB User password
+$sql_config['default']['database'] = "";       // Change this to the proper DB Name
+$sql_config['default']['port'] = 3306;        // Change this to the proper DB Port
+/* End of section */
+//// DNS MySQL Database Configuration Settings
+$sql_config['dns']['host'] = "127.0.0.1";       // Change this to the proper DB Host name
+$sql_config['dns']['username'] = "";   // Change this to the proper DB User
+$sql_config['dns']['password'] = "";     // Change this to the proper DB User password
+$sql_config['dns']['database'] = "";        // Change this to the proper DB Name
+$sql_config['dns']['port'] = 3306;        // Change this to the proper DB Port
+/* End of section */
+//// Email MySQL Database Configuration Settings
+$sql_config['email']['host'] = "127.0.0.1";     // Change this to the proper DB Host name
+$sql_config['email']['username'] = "";         // Change this to the proper DB User
+$sql_config['email']['password'] = "";   // Change this to the proper DB User password
+$sql_config['email']['database'] = "";    // Change this to the proper DB Name
+$sql_config['email']['port'] = 3308;        // Change this to the proper DB Port
+/* End of section */
+//// Default MySQL Database Configuration Settings
+$sql_config['information_schema']['host'] = "127.0.0.1";   // Change this to the proper DB Host name
+$sql_config['information_schema']['username'] = "";       // Change this to the proper DB User
+$sql_config['information_schema']['password'] = ""; // Change this to the proper DB User password
+$sql_config['information_schema']['database'] = "information_schema";        // Change this to the proper DB Name
+$sql_config['information_schema']['port'] = 3307;        // Change this to the proper DB Port
+?>
