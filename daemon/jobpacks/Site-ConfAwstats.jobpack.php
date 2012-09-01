@@ -7,7 +7,7 @@
 * Description:
 *  Creates the site configuration file for awstats based on the appropriate template
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

@@ -7,7 +7,7 @@
 * Description:
 *  Contains error logging functions
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

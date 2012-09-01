@@ -7,7 +7,7 @@
 * Description:
 *  Runs http bandwidth updates on all sites with awstats files
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

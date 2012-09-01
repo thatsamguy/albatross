@@ -7,7 +7,7 @@
 * Description:
 *  Contains all admin changeable configuration options for the Albatross Manager
 *
-* Copyright 2012 Cyprix Enterprises
+* Copyright 2012 Samuel Bailey
 */
 ?>
 <?php

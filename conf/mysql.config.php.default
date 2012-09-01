@@ -7,7 +7,7 @@
 * Description:
 *  Contains configuration settings for connecting to, and authenticating to the albatross database.
 *
-* Copyright 2012 Cyprix Enterprises
+* Copyright 2012 Samuel Bailey
 */
 ?>
 <?php

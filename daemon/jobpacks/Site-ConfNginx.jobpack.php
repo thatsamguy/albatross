@@ -7,7 +7,7 @@
 * Description:
 *  Creates the site configuration file for nginx based on the appropriate profile
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

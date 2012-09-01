@@ -8,7 +8,7 @@
 *  Creates the Directory for the new account and assigns the correct initial permissions
 *  On success requests initial subfolders and files to be created
 *  
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

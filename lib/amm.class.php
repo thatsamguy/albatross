@@ -7,7 +7,7 @@
 * Description:
 *  Contains all functions for managing the AMM including inserting new jobs
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

@@ -8,7 +8,7 @@
 *  Using the configuration from mysql.config.php, allows connection and disconnection from the MySQL Database.
 *  It also initiates the escape string command.
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

@@ -7,7 +7,7 @@
 * Description:
 *  Calculates the http bandwidth of a site for the current month
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

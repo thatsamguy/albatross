@@ -7,7 +7,7 @@
 * Description:
 *  Creates the site configuration file for php-fpm based on the appropriate template
 *
-* Copyright 2012 Cyprix Enterprises
+* Copyright 2012 Samuel Bailey
 */
 ?>
 <?php

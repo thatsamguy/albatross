@@ -6,7 +6,7 @@
 * Description:
 *  Monitors the Albatross Manager and does live updating of the configuration
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

@@ -7,7 +7,7 @@
 * Description:
 *  Creates the initial subfolders for the new account and assigns the correct permissions
 *  
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

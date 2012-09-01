@@ -7,7 +7,7 @@
 * Description:
 *  Calculates the ftp bandwidth for each account from the rotated vsftpd log files
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

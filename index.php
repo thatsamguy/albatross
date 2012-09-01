@@ -7,7 +7,7 @@
 * Description:
 *  Base page that manages all functions
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php $pt[]['index.php :: start'] = microtime(true); ?>

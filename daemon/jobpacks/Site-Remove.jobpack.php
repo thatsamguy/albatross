@@ -7,7 +7,7 @@
 * Description:
 *  Creates the Directory for the new site and assigns the correct initial permissions
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

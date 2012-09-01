@@ -7,7 +7,7 @@
 * Description:
 *  Contains all functions for the email database
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

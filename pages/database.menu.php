@@ -7,7 +7,7 @@
 * Description:
 *  Configures page title and menu
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

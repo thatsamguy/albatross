@@ -7,7 +7,7 @@
 * Description:
 *  Checks which emails have not had their size updated recently and adds check to job queue
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

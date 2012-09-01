@@ -7,7 +7,7 @@
 * Description:
 *  Calculates the size of a sites directory
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

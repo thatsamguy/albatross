@@ -7,7 +7,7 @@
 * Description:
 *  Contains all functions for the accounts database and interface with the system users
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

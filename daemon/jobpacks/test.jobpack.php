@@ -7,7 +7,7 @@
 * Description:
 *  Test job for debugging and testing
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

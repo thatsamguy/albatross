@@ -7,7 +7,7 @@
 * Description:
 *  Tells nginx to reload its configuration files, does a configtest first
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

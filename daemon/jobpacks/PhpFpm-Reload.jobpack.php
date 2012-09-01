@@ -7,7 +7,7 @@
 * Description:
 *  Tells php-fpm to reload its configuration files
 *
-* Copyright 2012 Cyprix Enterprises
+* Copyright 2012 Samuel Bailey
 */
 ?>
 <?php

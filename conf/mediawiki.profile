@@ -1,6 +1,6 @@
 # nginx template
 # mediawiki template with dynamic redirects
-# By Cyprix Enterprises 2011 for the Albatross Manager
+# Samuel Bailey 2011 for the Albatross Manager
 #
 # Variables:
 # _basedir_ = base directory for data files

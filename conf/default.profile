@@ -1,6 +1,6 @@
 # nginx template
 # default template with php enabled
-# By Cyprix Enterprises 2011 for the Albatross Manager
+# Samuel Bailey 2011 for the Albatross Manager
 #
 # Variables:
 # _basedir_ = base directory for data files

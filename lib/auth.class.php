@@ -7,7 +7,7 @@
 * Description:
 *  Allows authentication of accounts via php, including session management
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

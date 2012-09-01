@@ -7,7 +7,7 @@
 * Description:
 *  Sanitizes all config variables and loads them into an object as variables
 *
-* Copyright 2011 Cyprix Enterprises
+* Copyright 2011 Samuel Bailey
 */
 ?>
 <?php

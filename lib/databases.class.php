@@ -7,7 +7,7 @@
 * Description:
 *  Contains all functions for managing user databases
 *
-* Copyright 2010 Cyprix Enterprises
+* Copyright 2010 Samuel Bailey
 */
 ?>
 <?php
