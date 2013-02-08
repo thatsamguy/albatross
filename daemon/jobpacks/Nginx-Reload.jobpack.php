@@ -39,7 +39,7 @@ $jobdata = $jobdata[1];
 
 // Do a configtest before reload
 unset($result,$retval);
-exec("/sbin/service nginx configtest",$result,$retval);
+exec("/usr/sbin/nginx -c /etc/nginx/nginx.conf -t",$result,$retval);
 if($retval != 0){
   $errmsg = "unable to run configtest";
   $error->add("jobpack-Nginx-Reload",$errmsg);
@@ -55,7 +55,7 @@ if($retval != 0){
 reload:
 // Reload config
 unset($result,$retval);
-exec("/sbin/service nginx reload",$result,$retval);
+exec("/usr/sbin/nginx -c /etc/nginx/nginx.conf -s reload",$result,$retval);
 if($retval != 0){
   $errmsg = "unable to reload nginx configuration";
   $error->add("jobpack-Nginx-Reload",$errmsg);
