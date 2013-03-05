@@ -7,7 +7,7 @@
 * Description:
 *  Contains all functions for managing the AMM including inserting new jobs
 *
-* Copyright 2011 Samuel Bailey
+* Copyright 2013 Samuel Bailey
 */
 ?>
 <?php
@@ -20,6 +20,7 @@ include_once("error.class.php");
 class amm{
 
   private $db;
+  private $node_array = array('web','mail','dns');
 
   function __construct(){
     // start db connection
@@ -33,8 +34,40 @@ class amm{
     unset($this->db);
   }
 
-  public function add_job($jobtype,$acc_id,$jobdata=array(),$workflow=""){ // adds a new job to the amm queue. $jobdata is a key=>value array of data.
+  public function add_job($jobtype,$acc_id,$jobdata=array(),$node=""){ // adds a new job to the amm queue. $jobdata is a key=>value array of data.
     global $error;
+
+    if(trim($node)==""){
+      $node = "any";
+    }
+
+    if(in_array($node,$this->node_array)){
+      $node_expansion = $this->node_expand($node);
+      if($node_expansion[0] AND count($node_expansion[1])>0){
+        $return[1] = "";
+        foreach($node_expansion[1] as $value){
+          $newjob = $this->add_job($jobtype,$acc_id,$jobdata,$value);
+          if($newjob[0]){
+            $return[1] = $return[1]." ".$newjob[1];
+          }
+        }
+        unset($value,$node_expansion);
+        $return[0] = true;
+        goto end;
+      }
+    }else{
+      $esc = $this->db->esc($node);
+      unset($node);
+      if(!$esc[0]){
+        $return[0] = false;
+        $return[1] = $esc[1];
+        unset($esc);
+        goto end;
+      }
+  
+      $node = $esc[1];
+      unset($esc);
+    }
 
     // check for a vaild jobtype
     $check = $this->job_type_check($jobtype);
@@ -76,31 +109,10 @@ class amm{
     $jobdata = $esc[1];
     unset($esc);
 
-    // escape $workflow
-    if($workflow!=""){
-      $esc = $this->db->esc($workflow);
-      unset($workflow);
-      if(!$esc[0]){
-	$return[0] = false;
-	$return[1] = $esc[1];
-	unset($esc);
-	goto end;
-      }
-      
-      $workflow = $esc[1];
-      unset($esc);
-    }
-
-    if($workflow == "new"){
-      $workflowdata = base_convert(mt_rand(1679616,60466175),10,36);
-    }elseif(strlen($workflow)!=5){
-      $workflowdata = "";
-    }
-
-    $uid = time()."_".mt_rand(100,999);
+    $uid = substr(time()."_".$node."_".mt_rand(100,999),0,20);
 
     // Add job to database queue
-    $query = "INSERT INTO amm VALUES(\"".$uid."\",\"".$jobtype."\",\"new\",\"".$acc_id."\",\"".$jobdata."\",NOW(),NOW(),0,\"".$workflowdata."\")";
+    $query = "INSERT INTO amm VALUES(\"".$uid."\",\"".$jobtype."\",\"new\",\"".$acc_id."\",\"".$jobdata."\",NOW(),NOW(),0,\"".$node."\")";
     if($this->db->sql->query($query)===true){
       $return[0] = true;
       $return[1] = $uid;
@@ -118,7 +130,7 @@ class amm{
       if($workflow == "new"){
 	$workflowdata = base_convert(mt_rand(1679616,60466175),10,36);
       }
-      $query = "INSERT INTO amm VALUES(\"".$uid."\",\"".$jobtype."\",\"new\",\"".$acc_id."\",\"".$jobdata."\",NOW(),NOW(),0,\"".$workflowdata."\")";
+      $query = "INSERT INTO amm VALUES(\"".$uid."\",\"".$jobtype."\",\"new\",\"".$acc_id."\",\"".$jobdata."\",NOW(),NOW(),0,\"".$node."\")";
       if($this->db->sql->query($query)===true){
 	$return[0] = true;
 	$return[1] = $uid;
@@ -135,7 +147,7 @@ class amm{
     }
 
     end:
-    unset($jobtype,$acc_id,$jobdata,$query,$uid,$workflow,$workflowdata,$errmsg);
+    unset($jobtype,$acc_id,$jobdata,$query,$uid,$node,$errmsg);
     return $return;
 
   }
@@ -785,6 +797,129 @@ class amm{
     unset($jobtype,$jobarray);
     return $return;
 
+  }
+
+  public function node_add($node,$type){
+    global $error;
+
+    // escape $node
+    $esc = $this->db->esc(stripslashes($node));
+    unset($node);
+    if(!$esc[0]){
+      $return[0] = false;
+      $return[1] = $esc[1];
+      unset($esc);
+      goto end;
+    }
+    
+    $node = $esc[1];
+    unset($esc);
+    
+    if(in_array($type,$this->node_array)){
+      // Add node definition to database
+      $query = "INSERT INTO nodes VALUES('".$node."','".$type."',NOW())";
+      if($this->db->sql->query($query)===true){
+        $return[0] = true;
+        $return[1] = $uid;
+        goto end;
+      }else{
+        // query failed. attempt reconnect
+        if(!$this->db->connect()){
+          $errmsg = "database is not avaliable";
+          $return[0] = false;
+          $return[1] = $errmsg;
+          goto end;
+        }
+        if($this->db->sql->query($query)===true){
+          $return[0] = true;
+          $return[1] = $node;
+          goto end;
+        }else{
+          // other database error
+          $error->add("amm->node_add",$this->db->sql->error);
+          $error->add("amm->node_add",$query);
+          $errmsg = "unable to add new node definition to the db";
+          $return[0] = false;
+          $return[1] = $errmsg;
+          goto end;
+        }
+      }
+    }else{
+      $return[0] = false;
+      $errmsg = "Invalid node type";
+      $error->add("amm->node_add",$errmsg.": ".$type);
+      $return[1] = $errmsg;
+    }
+
+    end:
+    unset($node,$type);
+    return $return;
+  }
+
+  public function node_expand($type){
+    global $error;
+
+    if(in_array($type,$this->node_array)){
+      $query = "SELECT node_id FROM nodes WHERE type='".$type."'";
+      if($result = $this->db->sql->query($query)){
+        $num_rows = $result->num_rows;
+        if($num_rows==0){
+          $return[0] = true;
+          $return[1] = array();
+          goto end;
+        }
+        $return[0] = true;
+        while($row = $result->fetch_assoc()){
+          $return[1][] = $row['node_id'];
+        }
+        $result->close();
+        unset($row,$result);
+        goto end;
+      }else{
+        // query failed. attempt reconnect
+        if(!$this->db->connect()){
+          $errmsg = "database is not avaliable";
+          $return[0] = false;
+          $return[1] = $errmsg;
+          goto end;
+        }
+        // and try again
+        unset($result);
+        if($result = $this->db->sql->query($query)){
+          $num_rows = $result->num_rows;
+          if($num_rows==0){
+            $return[0] = true;
+            $return[1] = array();
+            goto end;
+          }
+          $return[0] = true;
+          while($row = $result->fetch_assoc()){
+            $return[1][] = $row['node_id'];
+          }
+          $result->close();
+          unset($row,$result);
+          goto end;
+        }else{
+          // other database error
+          $error->add("amm->node_expand",$this->db->sql->error);
+          $error->add("amm->node_expand",$query);
+          $errmsg = "unable to query database to complete node expansion";
+          $return[0] = false;
+          $return[1] = $errmsg;
+          unset($errmsg);
+          goto end;
+        }
+      }
+    }else{
+      $return[0] = false;
+      $errmsg = "Invalid node type";
+      $error->add("amm->node_expand",$errmsg.": ".$type);
+      $return[1] = $errmsg;
+    }
+
+    end:
+    unset($type);
+    return $return;
   }
 
 }
