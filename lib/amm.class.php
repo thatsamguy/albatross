@@ -860,7 +860,7 @@ class amm{
     global $error;
 
     if(in_array($type,$this->node_array)){
-      $query = "SELECT node_id FROM nodes WHERE type='".$type."'";
+      $query = "SELECT node_id FROM nodes WHERE node_type='".$type."'";
       if($result = $this->db->sql->query($query)){
         $num_rows = $result->num_rows;
         if($num_rows==0){
