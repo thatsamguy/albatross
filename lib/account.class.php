@@ -189,7 +189,7 @@ class account{ // TODO: migrate code to new system to avoid race condition on ch
     }
     // Add user group to nginx permissions
     if(!is_array($return)){
-      system("/usr/sbin/usermod -a -G ".$acc_id." nginx",$retval);
+      system("/usr/sbin/usermod -a -G z".$acc_id." nginx",$retval);
       if($retval != 0){
 	$errmsg = "unable to add system user group '".$acc_id."' to nginx";
 	$error->add("account->add",$errmsg);
