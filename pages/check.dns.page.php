@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <div class="block doublewidth">
   <h3>Check worldwide propagation of records<?php if ($domain_id > 0) {
     echo ' from '.$domain;

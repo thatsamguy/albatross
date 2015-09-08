@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('add', $_POST) and $_POST['add'] == 'Add alias') {
     if ($_POST['alias'] == '' or $_POST['destination'] == '') {

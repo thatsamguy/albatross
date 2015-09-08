@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <div class="block">
   <?php
     $totals = array('sites' => 0,'databases' => 0,'emails' => 0);

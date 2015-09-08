@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('remove', $_POST) and $_POST['remove'] == 'Confirm remove database') {
     $result = $database->remove($db_name);

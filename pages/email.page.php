@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php $pt[]['email.page.php :: start'] = microtime(true); ?>
 <div class="block doublewidth">
   <h3>Email Addresses</h3>

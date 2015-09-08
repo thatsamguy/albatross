@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('apply', $_POST) and $_POST['apply'] == 'Confirm apply configuration' and $sitename != '' and strlen($sitename) < 256) {
     $thissite = $site_data[1][$sitename];

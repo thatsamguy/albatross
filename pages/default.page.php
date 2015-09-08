@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <div class="block doublewidth">
   <h3>Welcome to the Albatross Manager</h3>
   <p>Currently this system is undergoing construction. Any non-operational areas or links will lead you back to here.</p>

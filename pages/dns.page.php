@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <div class="block midwidth">
   <h3>Domains</h3>
   <?php

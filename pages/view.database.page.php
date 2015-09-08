@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <div class="block doublewidth">
   <h3><?php echo $db_name;?></h3>
   <?php

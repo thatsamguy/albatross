@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('remove', $_POST) and $_POST['remove'] == 'Confirm remove email account') {
     $result = $email->remove_email($email_acc['email']);

@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php
   if ($domain_id > 0) {
       $nslist[] = $domain;

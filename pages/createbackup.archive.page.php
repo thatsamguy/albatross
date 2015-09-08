@@ -1,3 +1,4 @@
+<?php error_log(__FILE__);?>
 <?php include 'archive.page.php'; ?>
 <?php unset($site_data, $err, $result);?>
 <div class="block">
