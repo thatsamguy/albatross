@@ -116,10 +116,11 @@
   </thead>
   <tbody>
   <?php
-    $total_email = 0;
-    $total_alias = 0;
-    $total_size = 0;
+$total_email = 0;
+$total_alias = 0;
+$total_size = 0;
 
+if (is_array($domains[1])) {
     foreach ($domains[1] as $domain) {
         echo "\n<tr>\n";
         if (array_key_exists($domain, $totalsize)) {
@@ -176,7 +177,11 @@
     echo "\t\t<th class=\"center\"></th>\n";
     echo "\t\t<th class=\"center\">".$total_size."</th>\n";
     echo "\t</tr>\n";
-  ?>
+} else {
+    echo '
+    <tr><td colspan="5">No email accounts to summarize</td></tr>';
+}
+?>
   </tbody>
 </table>
 </div>

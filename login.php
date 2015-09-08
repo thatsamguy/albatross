@@ -1,19 +1,17 @@
 <?php
-/* 
+/*
 * Albatross Manager
-* 
+*
 * Login Page
-* 
+*
 * Description:
 *  Authentication system
 *
 * Copyright 2011 Cyprix Enterprises
 */
-?>
-<?php
+
 set_include_path(realpath('lib').':'.realpath('conf'));
-?>
-<?php
+
 // Check authentication
 include_once 'auth.class.php';
 $auth = new auth();
@@ -35,6 +33,7 @@ if (array_key_exists('username', $_POST) and array_key_exists('password', $_POST
     }
 }
 unset($login);
+
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +72,7 @@ unset($login);
       </form>
       <?php if (strlen($error) > 0) {
     ?><h4 class="error"><?php echo $error;
-    ?></h4><?php 
+    ?></h4><?php
 } ?>
     </div>
   </div>
