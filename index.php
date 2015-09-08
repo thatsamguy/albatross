@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 /*
 * Albatross Manager
@@ -12,6 +11,8 @@
 */
 
 $pt[]['index.php :: start'] = microtime(true);
+
+//error_log('REQUEST='.var_export($_REQUEST,true));
 
 /*
 // PHP Notice:  Constant DS already defined
@@ -138,8 +139,7 @@ if (in_array($page, $pages)) {
     include $page.'.menu.php';
 } else {
     // Page does not exist... anywhere!
-    error_log('!!! Redirect to /');
-    //header('Location: /');
+    header('Location: /');
 }
 
 unset($pages);

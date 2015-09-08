@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <div class="block">
   <?php
     $err = '';

@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('add', $_POST) and $_POST['add'] == 'Add email') {
     if ($_POST['user'] == '') {

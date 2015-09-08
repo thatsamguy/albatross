@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <div class="block doublewidth">
   <h3>Aliases</h3>
   <?php

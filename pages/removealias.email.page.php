@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 // work out domain and username from alias
 $array = explode('@', $uri[2]);

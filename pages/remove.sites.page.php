@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 if (array_key_exists('remove', $_POST) and $_POST['remove'] == 'Confirm remove site' and $sitename != '' and strlen($sitename) < 256) {
     $result = $site->remove($auth->acc_id, $sitename);

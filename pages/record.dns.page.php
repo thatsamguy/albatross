@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 $typearray = array('A','AAAA','CNAME','TXT');
 

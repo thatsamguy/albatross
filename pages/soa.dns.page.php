@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 <?php
 $domains = $dns->get_domains_for_acc_id($auth->acc_id);
 if (!$domains[0]) {

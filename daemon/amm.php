@@ -1,4 +1,3 @@
-<?php error_log(__FILE__);?>
 #!/usr/bin/php -q
 <?php
 /* 
