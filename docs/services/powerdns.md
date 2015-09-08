@@ -45,6 +45,6 @@ recursor=8.8.8.8:53
 * allow-recursion: set which networks can ask for domain info not in our database
 * master: allow this powerdns to be the source dns provider for some domains
 
-###Package requiurements
+###Package requirements
 
 Mageia: pdns, pdns-backend-mysql
