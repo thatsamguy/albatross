@@ -1,30 +1,33 @@
 <?php
-if(array_key_exists('add',$_POST) AND $_POST['add'] == "Create database"){
-  if($_POST['db_name']==""){
-    $errormsg = "the database name must have a value";
-  }elseif(strlen($_POST['passwd'])<3){
-    $errormsg = "database passwords must be at least three (3) characters long";
-  }else{
-    $result = $database->add($_POST['db_name'],$auth->acc_id,$_POST['passwd']);
-    if(!$result[0]){
-      $errormsg = $result[1];
-    }else{
-      header("Location: /database");
+if (array_key_exists('add', $_POST) and $_POST['add'] == 'Create database') {
+    if ($_POST['db_name'] == '') {
+        $errormsg = 'the database name must have a value';
+    } elseif (strlen($_POST['passwd']) < 3) {
+        $errormsg = 'database passwords must be at least three (3) characters long';
+    } else {
+        $result = $database->add($_POST['db_name'], $auth->acc_id, $_POST['passwd']);
+        if (!$result[0]) {
+            $errormsg = $result[1];
+        } else {
+            header('Location: /database');
+        }
     }
-  }
 }
 ?>
 <div class="block midwidth">
   <h3>New database</h3>
   <form action="/database/createdb" method="post">
   <table>
-    <?php if(strlen($errormsg)>0){ ?>
+    <?php if (strlen($errormsg) > 0) {
+    ?>
     <tfoot>
       <tr>
-	<td colspan="2" class="error"><?php echo $errormsg;?></td>
+	<td colspan="2" class="error"><?php echo $errormsg;
+    ?></td>
       </tr>
     </tfoot>
-    <?php } ?>
+    <?php 
+} ?>
     <tbody>
       <tr>
 	<th>Database Name</th>

@@ -18,8 +18,8 @@
 ?>
 <?php
 $pt[]['logs.menu.php :: start'] = microtime(true);
-$thispage['title'] = "Logs";
-$thispage['data'] = "default.page.php";
+$thispage['title'] = 'Logs';
+$thispage['data'] = 'default.page.php';
 #$thispage['menu'][0]['title'] = "View addresses";
 #$thispage['menu'][0]['image'] = "view-list-text.png";
 #$thispage['menu'][0]['link'] = "/email";
@@ -49,13 +49,13 @@ if(in_array($subpage,$subpages)){
       $email_acc = $email_acc[1];
       $domains = $dns->get_domains_for_acc_id($auth->acc_id);
       if($domains[0]){
-	if(in_array($email_acc['domain'],$domains[1])){
-	  unset($uri[2]);
-	}else{
-	  $thispage['data'] = "error.page.php";
-	}
+    if(in_array($email_acc['domain'],$domains[1])){
+      unset($uri[2]);
+    }else{
+      $thispage['data'] = "error.page.php";
+    }
       }else{
-	$thispage['data'] = "error.page.php";
+    $thispage['data'] = "error.page.php";
       }
     }else{
       $thispage['data'] = "error.page.php";

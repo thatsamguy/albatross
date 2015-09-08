@@ -1,33 +1,36 @@
 <?php
-$errormsg = "";
-if(array_key_exists('add',$_POST) AND $_POST['add'] == "Create site"){
-  if($_POST['site_name']==""){
-    $errormsg = "the site name must have a value";
-  }elseif($_POST['default_domain']==""){
-    $errormsg = "the primary domain name must have a value";
-  }elseif($_POST['profile']==""){
-    $errormsg = "a profile must be selected";
-  }else{
-    $result = $site->add($auth->acc_id,$_POST['site_name'],$_POST['default_domain'],$_POST['profile']);
-    if(!$result[0]){
-      $errormsg = $result[1];
-    }else{
-      header("Location: /sites");
+$errormsg = '';
+if (array_key_exists('add', $_POST) and $_POST['add'] == 'Create site') {
+    if ($_POST['site_name'] == '') {
+        $errormsg = 'the site name must have a value';
+    } elseif ($_POST['default_domain'] == '') {
+        $errormsg = 'the primary domain name must have a value';
+    } elseif ($_POST['profile'] == '') {
+        $errormsg = 'a profile must be selected';
+    } else {
+        $result = $site->add($auth->acc_id, $_POST['site_name'], $_POST['default_domain'], $_POST['profile']);
+        if (!$result[0]) {
+            $errormsg = $result[1];
+        } else {
+            header('Location: /sites');
+        }
     }
-  }
 }
 ?>
 <div class="block midwidth">
   <h3>New site</h3>
   <form action="/sites/addsite" method="post">
   <table>
-    <?php if(strlen($errormsg)>0){ ?>
+    <?php if (strlen($errormsg) > 0) {
+    ?>
     <tfoot>
       <tr>
-	<td colspan="2" class="error"><?php echo $errormsg;?></td>
+	<td colspan="2" class="error"><?php echo $errormsg;
+    ?></td>
       </tr>
     </tfoot>
-    <?php } ?>
+    <?php 
+} ?>
     <tbody>
       <tr>
 	<th>Site Name</th>

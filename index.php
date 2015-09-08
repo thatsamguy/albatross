@@ -1,9 +1,9 @@
 <?php
-/* 
+/*
 * Albatross Manager
-* 
+*
 * Index Page
-* 
+*
 * Description:
 *  Base page that manages all functions
 *
@@ -12,38 +12,60 @@
 ?>
 <?php $pt[]['index.php :: start'] = microtime(true); ?>
 <?php
-set_include_path(realpath("lib").":".realpath("conf").":".realpath("pages"));
+set_include_path(realpath('lib').':'.realpath('conf').':'.realpath('pages'));
 ?>
 <?php
 // Check authentication
-include_once("auth.class.php");
-include_once("config.class.php");
+include_once 'auth.class.php';
+include_once 'config.class.php';
 $auth = new auth();
 $pt[]['index.php :: include auth, config'] = microtime(true);
 
-if($_COOKIE['SESSION']){
-  $login = $auth->authenticate_session();
-  if(!$login[0]){
-    header("Location: /login.php");
-  }
-}else{
-  header("Location: /login.php");
+if ($_COOKIE['SESSION']) {
+    $login = $auth->authenticate_session();
+    if (!$login[0]) {
+        header('Location: /login.php');
+    }
+} else {
+    header('Location: /login.php');
 }
 unset($login);
 $pt[]['index.php :: check auth'] = microtime(true);
 ?>
 <?php
-$uri = trim($_SERVER['REQUEST_URI'],"/");
-$uri = explode("/",$uri);
+$uri = trim($_SERVER['REQUEST_URI'], '/');
+$uri = explode('/', $uri);
 $uri[0] = strtolower($uri[0]);
-if(count($uri)>1){$uri_fullcase[1] = $uri[1]; $uri[1] = strtolower($uri[1]);}else{ $uri[1] = ""; } 
-if(count($uri)>2){$uri_fullcase[2] = $uri[2]; $uri[2] = strtolower($uri[2]);}else{ $uri[2] = ""; } 
-if(count($uri)>3){$uri_fullcase[3] = $uri[3]; $uri[3] = strtolower($uri[3]);}else{ $uri[3] = ""; } 
-if(count($uri)>4){$uri_fullcase[4] = $uri[4]; $uri[4] = strtolower($uri[4]);}else{ $uri[4] = ""; } 
+if (count($uri) > 1) {
+    $uri_fullcase[1] = $uri[1];
+    $uri[1] = strtolower($uri[1]);
+} else {
+    $uri[1] = '';
+}
+if (count($uri) > 2) {
+    $uri_fullcase[2] = $uri[2];
+    $uri[2] = strtolower($uri[2]);
+} else {
+    $uri[2] = '';
+}
+if (count($uri) > 3) {
+    $uri_fullcase[3] = $uri[3];
+    $uri[3] = strtolower($uri[3]);
+} else {
+    $uri[3] = '';
+}
+if (count($uri) > 4) {
+    $uri_fullcase[4] = $uri[4];
+    $uri[4] = strtolower($uri[4]);
+} else {
+    $uri[4] = '';
+}
 $page = $uri[0];
 $subpage = $uri[1];
-if($page == ""){ $page = "default"; }
-$errormsg = "";
+if ($page == '') {
+    $page = 'default';
+}
+$errormsg = '';
 $pt[]['index.php :: setup uri and global vars'] = microtime(true);
 ?><!DOCTYPE html>
 <html>
@@ -75,20 +97,20 @@ $pt[]['index.php :: setup uri and global vars'] = microtime(true);
   <div id="main">
 <?php
 /*  List of hardcoded dynamic url roots */
-$pages = array("logout", "dns", "email", "stats", "logs", "database", "sites", "archive");
+$pages = array('logout', 'dns', 'email', 'stats', 'logs', 'database', 'sites', 'archive');
 $thispage['menu'] = array();
 $thispage['menu2'] = array();
 $pt[]['index.php :: menu and page array'] = microtime(true);
 
-if(in_array($page,$pages)){
-  // Page Exists
-  include($page.".menu.php");
-}elseif($page == "default"){
-  // Default Page
-  include($page.".menu.php");
-}else{
-  // Page does not exist... anywhere!
-  header("Location: /");
+if (in_array($page, $pages)) {
+    // Page Exists
+  include $page.'.menu.php';
+} elseif ($page == 'default') {
+    // Default Page
+  include $page.'.menu.php';
+} else {
+    // Page does not exist... anywhere!
+  header('Location: /');
 }
 unset($pages);
 $pt[]['index.php :: post include page'] = microtime(true);
@@ -96,31 +118,40 @@ $pt[]['index.php :: post include page'] = microtime(true);
 <?php // Start individual page title and menu ?>
     <div class="pagetitle fullwidth"><h1><?php echo $thispage['title'];?></h1></div>
     <?php
-      if(count($thispage['menu'])>0){
-	echo "<div class=\"minormenu fullwidth\">\n";
-	echo "\t<div class=\"menu\">\n";
-	foreach($thispage['menu'] as $item){
-	  if(array_key_exists("new_window",$item) AND $item['new_window']==true){ $newwindow = " target=\"_new\""; }else{ $newwindow = ""; }
-	  echo "\t\t<div><a href=\"".$item['link']."\"".$newwindow."><img src=\"/images/".$item['image']."\" alt=\"\"><br>".$item['title']."</a></div>\n";
-	}
-	echo "\t</div>\n";
-	echo "</div>\n";
+      if (count($thispage['menu']) > 0) {
+          echo "<div class=\"minormenu fullwidth\">\n";
+          echo "\t<div class=\"menu\">\n";
+          foreach ($thispage['menu'] as $item) {
+              if (array_key_exists('new_window', $item) and $item['new_window'] == true) {
+                  $newwindow = ' target="_new"';
+              } else {
+                  $newwindow = '';
+              }
+              echo "\t\t<div><a href=\"".$item['link'].'"'.$newwindow.'><img src="/images/'.$item['image'].'" alt=""><br>'.$item['title']."</a></div>\n";
+          }
+          echo "\t</div>\n";
+          echo "</div>\n";
       }
-      if(count($thispage['menu2'])>0){
-	echo "<div class=\"minormenu fullwidth\">\n";
-	if(strlen($thispage['menu2']['title'])>0){ echo "\t<h3>&nbsp;".$thispage['menu2']['title']."</h3>\n"; unset($thispage['menu2']['title']); }
-	echo "\t<div class=\"menu\">\n";
-	foreach($thispage['menu2'] as $item){
-	  echo "\t\t<div><a href=\"".$item['link']."\"><img src=\"/images/".$item['image']."\" alt=\"\"><br>".$item['title']."</a></div>\n";
-	}
-	echo "\t</div>\n";
-	echo "</div>\n";
+      if (count($thispage['menu2']) > 0) {
+          echo "<div class=\"minormenu fullwidth\">\n";
+          if (strlen($thispage['menu2']['title']) > 0) {
+              echo "\t<h3>&nbsp;".$thispage['menu2']['title']."</h3>\n";
+              unset($thispage['menu2']['title']);
+          }
+          echo "\t<div class=\"menu\">\n";
+          foreach ($thispage['menu2'] as $item) {
+              echo "\t\t<div><a href=\"".$item['link'].'"><img src="/images/'.$item['image'].'" alt=""><br>'.$item['title']."</a></div>\n";
+          }
+          echo "\t</div>\n";
+          echo "</div>\n";
       }
     ?>
 <?php // End individual page title and menu ?>
 <?php $pt[]['index.php :: post included page menus'] = microtime(true); ?>
 <?php // Start individual page data ?>
-<?php if($thispage['data']){include($thispage['data']);}?>
+<?php if ($thispage['data']) {
+    include $thispage['data'];
+}?>
 <?php // End individual page data ?>
 <?php $pt[]['index.php :: post include thispage data'] = microtime(true); ?>
   </div>
@@ -136,23 +167,23 @@ $pt[]['index.php :: post include page'] = microtime(true);
 </body>
 </html><?php $pt[]['index.php :: end'] = microtime(true); ?><?php
 // If enabled, display page tracing in hidden html
-if($conf->pt){
-  echo "<!--\n";
-  echo "Page Trace\n";
-  echo "Order\tTime(s)\tSplit(ms)\tTrace\n";
-  $ptkey = array_keys($pt[0]);
-  $starttime = $pt[0][$ptkey[0]];
-  $prevtime = $starttime;
-  foreach($pt as $key=>$array){
-    foreach($array as $key2=>$value){
-      $pt[$key][$key2] = $value - $starttime;
-      echo $key.":\t".round($pt[$key][$key2],3)."\t".round(($value - $prevtime)*1000,3)."\t".$key2."\n";
-      $prevtime = $value;
+if ($conf->pt) {
+    echo "<!--\n";
+    echo "Page Trace\n";
+    echo "Order\tTime(s)\tSplit(ms)\tTrace\n";
+    $ptkey = array_keys($pt[0]);
+    $starttime = $pt[0][$ptkey[0]];
+    $prevtime = $starttime;
+    foreach ($pt as $key => $array) {
+        foreach ($array as $key2 => $value) {
+            $pt[$key][$key2] = $value - $starttime;
+            echo $key.":\t".round($pt[$key][$key2], 3)."\t".round(($value - $prevtime) * 1000, 3)."\t".$key2."\n";
+            $prevtime = $value;
+        }
     }
-  }
-  echo "Totaltime: ".round(($prevtime - $starttime),3)."s\n";
-  echo "-->\n";
-  unset($ptkey,$starttime,$totaltime,$key,$key2,$array,$value,$prevtime);
+    echo 'Totaltime: '.round(($prevtime - $starttime), 3)."s\n";
+    echo "-->\n";
+    unset($ptkey, $starttime, $totaltime, $key, $key2, $array, $value, $prevtime);
 }
 unset($pt);
 ?>

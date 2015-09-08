@@ -11,28 +11,28 @@
 */
 ?>
 <?php
-set_include_path(realpath("lib").":".realpath("conf"));
+set_include_path(realpath('lib').':'.realpath('conf'));
 ?>
 <?php
 // Check authentication
-include_once("auth.class.php");
+include_once 'auth.class.php';
 $auth = new auth();
-$error = "";
+$error = '';
 
-if(array_key_exists('username',$_POST) AND array_key_exists('password',$_POST)){
-  $login = $auth->authenticate_user($_POST['username'],$_POST['password']);
-  if($login[0]){
-    header("Location: /");
-  }else{
-    $error = $login[1];
-  }
-}elseif(array_key_exists('SESSION',$_COOKIE)){
-  $login = $auth->authenticate_session();
-  if($login[0]){
-    header("Location: /");
-  }else{
-    $error = $login[1];
-  }
+if (array_key_exists('username', $_POST) and array_key_exists('password', $_POST)) {
+    $login = $auth->authenticate_user($_POST['username'], $_POST['password']);
+    if ($login[0]) {
+        header('Location: /');
+    } else {
+        $error = $login[1];
+    }
+} elseif (array_key_exists('SESSION', $_COOKIE)) {
+    $login = $auth->authenticate_session();
+    if ($login[0]) {
+        header('Location: /');
+    } else {
+        $error = $login[1];
+    }
 }
 unset($login);
 ?><!DOCTYPE html>
@@ -71,7 +71,10 @@ unset($login);
 	  </tbody>
 	</table>
       </form>
-      <?php if(strlen($error)>0){ ?><h4 class="error"><?php echo $error; ?></h4><?php } ?>
+      <?php if (strlen($error) > 0) {
+    ?><h4 class="error"><?php echo $error;
+    ?></h4><?php 
+} ?>
     </div>
   </div>
   <div id="footer">

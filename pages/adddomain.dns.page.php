@@ -1,22 +1,25 @@
 <?php
-if(array_key_exists('add',$_POST) AND $_POST['add'] == "Add domain"){
-  $result = $dns->add_domain($_POST['domain_name'],$auth->acc_id);
-  if(!$result[0]){
-    $errormsg = $result[1];
-  }
+if (array_key_exists('add', $_POST) and $_POST['add'] == 'Add domain') {
+    $result = $dns->add_domain($_POST['domain_name'], $auth->acc_id);
+    if (!$result[0]) {
+        $errormsg = $result[1];
+    }
 }
 ?>
 <div class="block">
   <h3>Add new domain</h3>
   <form action="/dns/adddomain" method="post">
   <table>
-    <?php if(strlen($errormsg)>0){ ?>
+    <?php if (strlen($errormsg) > 0) {
+    ?>
     <tfoot>
       <tr>
-	<td colspan="2" class="error"><?php echo $errormsg;?></td>
+	<td colspan="2" class="error"><?php echo $errormsg;
+    ?></td>
       </tr>
     </tfoot>
-    <?php } ?>
+    <?php 
+} ?>
     <tbody>
       <tr>
 	<th>Domain Name</th>
@@ -36,4 +39,4 @@ if(array_key_exists('add',$_POST) AND $_POST['add'] == "Add domain"){
   </table>
   </form>
 </div>
-<?php include("dns.page.php");?>
+<?php include 'dns.page.php';?>
