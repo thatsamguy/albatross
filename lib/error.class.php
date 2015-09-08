@@ -1,9 +1,9 @@
 <?php
-/* 
+/*
 * Albatross Manager
-* 
+*
 * Error Log class
-* 
+*
 * Description:
 *  Contains error logging functions
 *
@@ -11,7 +11,7 @@
 */
 ?>
 <?php
-class error{
+class error2 {
   public $log = "default";
 
   function __construct() {
@@ -26,12 +26,12 @@ class error{
     global $conf;
     // Log message to file - TODO: Temporary solution until database created and tested. Also serves as backup to database
     if($this->log == "amm"){ $logfile = $conf->amm_log_file; }else{ $logfile = "error.log"; }
-    file_put_contents($logfile, "[".gmdate("d/m/y H:i:s")."] ".$reference." \"".$message."\"\n", FILE_APPEND | LOCK_EX);
+    file_put_contents($logfile, "[".gmdate("d/m/y H:i:s")."] $reference \"".$message."\"\n", FILE_APPEND | LOCK_EX);
 
     unset($reference,$message,$logfile);
     return true;
   }
 }
 // Create error object
-$error = new error();
+$error = new error2();
 ?>
