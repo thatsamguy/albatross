@@ -1,8 +1,8 @@
-==PowerDNS==
+#PowerDNS
 
-Example PowerDNS setup for using Albatross configuration
+###Example PowerDNS setup for using Albatross configuration
 
-pdns.conf:
+Example full pdns.conf:
 ```
 module-dir=/usr/lib64/powerdns
 socket-dir=/var/run/powerdns
@@ -39,11 +39,12 @@ gmysql-dnssec=no
 recursor=8.8.8.8:53
 ```
 
-===Explanation===
+###Explanation
 * gmysql settings: for connecting to albatross pdns setup,
 * recursor: to handle requests not in powerdns mysql setup
 * allow-recursion: set which networks can ask for domain info not in our database
 * master: allow this powerdns to be the source dns provider for some domains
 
-===Package requiurements===
+###Package requiurements
+
 Mageia: pdns, pdns-backend-mysql
