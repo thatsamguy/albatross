@@ -12,7 +12,7 @@
 ?>
 <?php
 $pt[]['default.menu.php :: start'] = microtime(true);
-$thispage['title'] = "Albatross Manager";
-$thispage['data'] = "default.page.php";
+$thispage['title'] = 'Albatross Manager';
+$thispage['data'] = 'default.page.php';
 $pt[]['default.menu.php :: end'] = microtime(true);
 ?>

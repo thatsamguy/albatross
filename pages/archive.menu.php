@@ -12,20 +12,20 @@
 ?>
 <?php
 $pt[]['archive.menu.php :: start'] = microtime(true);
-include_once("sites.class.php");
+include_once 'sites.class.php';
 $site = new site();
 $pt[]['archive.menu.php :: include sites.class.php'] = microtime(true);
 ?>
 <?php
-$thispage['title'] = "Archives &amp; Backups";
-$thispage['data'] = "archive.page.php";
+$thispage['title'] = 'Archives &amp; Backups';
+$thispage['data'] = 'archive.page.php';
 #$thispage['menu'][0]['title'] = "View addresses";
 #$thispage['menu'][0]['image'] = "view-list-text.png";
 #$thispage['menu'][0]['link'] = "/email";
-$subpages = array("createbackup");
-if(in_array($subpage,$subpages)){
-  $thispage['data'] = $subpage.".archive.page.php";
-  $site_name = $uri[2];
+$subpages = array('createbackup');
+if (in_array($subpage, $subpages)) {
+    $thispage['data'] = $subpage.'.archive.page.php';
+    $site_name = $uri[2];
   /*if($subpage == "alias" OR $subpage == "addalias" OR $subpage == "removealias"){
     $alias_address = $uri[2];
     $domains = $dns->get_domains_for_acc_id($auth->acc_id);
@@ -37,13 +37,13 @@ if(in_array($subpage,$subpages)){
       $email_acc = $email_acc[1];
       $domains = $dns->get_domains_for_acc_id($auth->acc_id);
       if($domains[0]){
-	if(in_array($email_acc['domain'],$domains[1])){
-	  unset($uri[2]);
-	}else{
-	  $thispage['data'] = "error.page.php";
-	}
+    if(in_array($email_acc['domain'],$domains[1])){
+      unset($uri[2]);
+    }else{
+      $thispage['data'] = "error.page.php";
+    }
       }else{
-	$thispage['data'] = "error.page.php";
+    $thispage['data'] = "error.page.php";
       }
     }else{
       $thispage['data'] = "error.page.php";
